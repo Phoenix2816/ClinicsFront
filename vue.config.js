@@ -6,6 +6,9 @@ module.exports = defineConfig({
 module.exports = {
 
     devServer: {
+        devServer: {
+            allowedHosts: 'all',
+        },
         proxy: {
             'api': {
                 target: 'https://clinics-7.onrender.com',
