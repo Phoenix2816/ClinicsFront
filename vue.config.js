@@ -12,7 +12,7 @@ module.exports = {
     allowedHosts: 'all',
     proxy: {
       '/api': {
-        target: 'https://clinics-7.onrender.com',
+        target: API_BASE_URL,
         changeOrigin: true,
         secure: false,
         pathRewrite: { '^/api': '/api' }
