@@ -26,7 +26,7 @@ export default {
   methods: {
     async loadPatient() {
       try {
-        const { data } = await axios.get(`/api/patients/${this.patientId}`);
+        const { data } = await axios.get(`https://clinics-7.onrender.com/api/patients/${this.patientId}`);
         this.form = {
           name: data.name || '',
           surname: data.surname || '',
@@ -39,7 +39,7 @@ export default {
     },
     async fetchDoctors() {
       try {
-        const { data } = await axios.get('/api/doctors');
+        const { data } = await axios.get('https://clinics-7.onrender.com/api/doctors');
         this.doctors = data;
       } catch (error) {
         console.error('Error loading doctors:', error);
@@ -47,7 +47,7 @@ export default {
     },
     async submit(data) {
       try {
-        await axios.put(`/api/patients/${this.patientId}`, data);
+        await axios.put(`https://clinics-7.onrender.com/api/patients/${this.patientId}`, data);
         this.$router.push('/patients');
       } catch (error) {
         console.error('Error updating patient:', error);

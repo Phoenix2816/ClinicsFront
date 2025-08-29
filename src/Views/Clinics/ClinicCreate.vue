@@ -11,7 +11,7 @@ export default {
   methods: {
     async createClinic(clinicData) {
       try {
-        await axios.post('/api/clinics', clinicData)
+        await axios.post('https://clinics-7.onrender.com/api/clinics', clinicData)
         // optionally show success message or navigate
       } catch (e) {
         console.error("Clinic creation error", e)

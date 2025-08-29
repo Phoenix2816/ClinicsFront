@@ -20,7 +20,7 @@ export default {
   methods: {
 async fetchClinics() {
     try {
-      const response = await axios.get('/api/clinics');
+      const response = await axios.get('https://clinics-7.onrender.com/api/clinics');
       // If API response shape is { totalCount, page, pageSize, data: [...] }
       this.clinics = response.data.data || response.data; // ensure it's the array
     } catch (error) {

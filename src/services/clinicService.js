@@ -4,30 +4,30 @@ import axios from 'axios'
 export const ClinicService = {
     // Ожидаем, что бэкенд вернёт: { data, totalCount, page, pageSize }
     async getClinics(params) {
-        const { data } = await axios.get('/api/clinics', { params })
+        const { data } = await axios.get('https://clinics-7.onrender.com/api/clinics', { params })
         return data
     },
 
     async getDoctorsInClinic(id) {
-        const { data } = await axios.get(`/api/clinics/MultipleMapping/${id}`)
+        const { data } = await axios.get(`https://clinics-7.onrender.com/api/clinics/MultipleMapping/${id}`)
         return data
     },
     async deleteClinic(id) {
-        await axios.delete(`/api/clinics/${id}`)
+        await axios.delete(`https://clinics-7.onrender.com/api/clinics/${id}`)
     },
     async getClinic(id) {
-        const { data } = await axios.get(`/api/clinics/${id}`)
+        const { data } = await axios.get(`https://clinics-7.onrender.com/api/clinics/${id}`)
         return data
     },
 
-    // 🔹 создать клинику (POST /api/clinics)
+    // 🔹 создать клинику (POST https://clinics-7.onrender.com/api/clinics)
     async createClinic(payload) {
-        const { data } = await axios.post('/api/clinics', payload)
+        const { data } = await axios.post('https://clinics-7.onrender.com/api/clinics', payload)
         return data
     },
-    // 🔹 обновить клинику (PUT /api/clinics/{id})
+    // 🔹 обновить клинику (PUT https://clinics-7.onrender.com/api/clinics/{id})
     async updateClinic(id, payload) {
-        const { data } = await axios.put(`/api/clinics/${id}`, payload)
+        const { data } = await axios.put(`https://clinics-7.onrender.com/api/clinics/${id}`, payload)
         return data
     }
 }

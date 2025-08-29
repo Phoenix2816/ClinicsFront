@@ -20,7 +20,7 @@ export default {
   methods: {
     async fetchDoctors() {
       try {
-        const { data } = await axios.get('/api/doctors');
+        const { data } = await axios.get('https://clinics-7.onrender.com/api/doctors');
         this.doctors = data.data || data;  // Adjust if paginated API
       } catch (error) {
         console.error('Error fetching doctors:', error);
@@ -28,7 +28,7 @@ export default {
     },
     async submit(formData) {
       try {
-        await axios.post('/api/patients', formData);
+        await axios.post('https://clinics-7.onrender.com/api/patients', formData);
         this.$router.push('/patients');
       } catch (error) {
         console.error('Error creating patient:', error);
