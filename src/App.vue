@@ -8,7 +8,7 @@
           </div>
 
 
-        <div class="col-12 col-md-9 col-lg-10">
+        <div class="content-column">
           <main class="flex-grow-1">
             <RouterView />
           </main>
@@ -37,34 +37,19 @@
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-.fixedSb{
-  position:fixed;
-  left:0;
-  min-height:100%;
-
-}
-main{
-  width: 98vw;
-  padding-left: 240px;
-  min-height:80vh;
-}
-.main{
-  margin-top: 61px;
-  max-width: 100vw;
-}
-header{
-  position:fixed;
-  left:0;
-  top:0;
-  width: 100vw;
-}
-*{
-  max-width: 100vw;
-}
-table{
-  overflow: scroll;
+* { box-sizing: border-box; }
+body { margin: 0; }
+#app { font-family: Avenir, Helvetica, Arial, sans-serif; }
+.main { margin-top: 61px; }
+.sbcomp { display: grid; grid-template-columns: 240px minmax(0, 1fr); }
+.fixedSb { position: sticky; top: 61px; align-self: start; height: calc(100vh - 61px); overflow-y: auto; }
+.content-column { min-width: 0; }
+main { width: 100%; padding: 1.25rem; min-height: 80vh; }
+header { position: fixed; left: 0; top: 0; width: 100%; z-index: 20; }
+.table-responsive { overflow-x: auto; }
+@media (max-width: 767px) {
+  .sbcomp { grid-template-columns: minmax(0, 1fr); }
+  .fixedSb { position: static; height: auto; }
+  main { padding: .75rem; }
 }
 </style>

@@ -11,7 +11,7 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-danger" @click="$emit('confirm')" data-bs-dismiss="modal">Save changes</button>
+                  <button type="button" class="btn btn-danger" @click="$emit('confirm')" data-bs-dismiss="modal">Delete</button>
               </div>
               </div>
           </div>
@@ -22,6 +22,7 @@
 
 export default {
   name: "DeleteComponent",
-  emits: ("confirm")
+  props: { title: { type: String, default: "Delete record" } },
+  emits: ["confirm"]
 };
 </script>

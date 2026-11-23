@@ -10,7 +10,8 @@ import PatientCreate from "@/Views/Patients/PatientCreate.vue"
 import PatientUpdate from "@/Views/Patients/PatientUpdate.vue"
 
 const routes = [
-    // {path: "/", redirect: "/clinics"},
+    {path: "/", redirect: "/clinics"},
+    {path: "/:pathMatch(.*)*", redirect: "/clinics"},
     {path: "/clinics", name: "clinics", component: ClinicsView},
     {path: "/clinics/create", name: "clinicCreate", component: ClinicCreate},
     {path: "/clinics/:id/update", name: "clinicUpdate", component: ClinicUpdate},

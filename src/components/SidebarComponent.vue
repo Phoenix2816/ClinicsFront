@@ -31,13 +31,14 @@ export default {
 }
 </script>
 
-<style>
-aside{
-    min-width: 240px;
-    min-height:100%;
-}
-svg{
-    max-height: 50px;
-    max-width: 50px;
+<style scoped>
+aside { width: 100%; min-height: 100%; }
+svg { width: 26px; height: 26px; margin-right: .5rem; flex-shrink: 0; }
+.list-group-item { display: flex; align-items: center; min-height: 48px; }
+@media (max-width: 767px) {
+  .list-group { flex-direction: row; flex-wrap: wrap; gap: .4rem; }
+  .list-group-item { flex: 1; width: auto; border-radius: .4rem; font-size: .9rem; padding: .5rem; }
+  svg { width: 20px; height: 20px; }
+  h2 { display: none; }
 }
 </style>
