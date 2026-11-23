@@ -20,8 +20,10 @@
       </template>
     </FilterBar>
 
-    <div v-if="loading" class="loader mx-auto"></div>
+    <div v-if="listLoading" class="loader mx-auto"></div>
 
+    <div v-else-if="loadError" class="alert alert-danger" role="alert">{{ loadError }}<button type="button" class="btn btn-outline-danger ms-3" @click="fetchPatients">Повторить</button></div>
+    <p v-else-if="!items.length" role="status">Записи не найдены.</p>
     <table v-else class="table table-bordered table-striped">
       <thead class="table-dark">
         <tr>
@@ -59,7 +61,7 @@
       </tbody>
     </table>
 
-    <PaginationBar :query="query" :totalCount="totalCount" @change-page="setPage" @change-page-size="setPageSize" />
+    <PaginationBar v-if="!loadError && !listLoading" :query="query" :totalCount="totalCount" @change-page="setPage" @change-page-size="setPageSize" />
 
     <DeleteComponent @confirm="deletePatient" />
 
@@ -96,7 +98,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePatientsStore, ['items', 'totalCount', 'query'])
+    ...mapState(usePatientsStore, ['items', 'totalCount', 'query', 'loadError', 'listLoading'])
   },
   mounted: async function () {
     this.loading = true

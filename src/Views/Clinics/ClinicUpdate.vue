@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/services/apiClient'
 import ClinicForm from "@/Views/Clinics/ClinicForm.vue"
 
 export default {
@@ -27,7 +27,7 @@ export default {
   methods: {
     async loadClinic() {
       try {
-        const { data } = await axios.get(`https://clinics-7.onrender.com/api/clinics/${this.clinicId}`)
+        const { data } = await axios.get(`/clinics/${this.clinicId}`)
         this.form = { name: data.name || '', address: data.address || '' }
       } catch (error) {
         this.handleError(error, 'loading clinic')
@@ -35,7 +35,7 @@ export default {
     },
     async updateClinic(updatedForm) {
       try {
-        await axios.put(`https://clinics-7.onrender.com/api/clinics/${this.clinicId}`, updatedForm)
+        await axios.put(`/clinics/${this.clinicId}`, updatedForm)
         this.alertMessage = 'Clinic successfully updated'
         this.alertType = 'success'
         setTimeout(() => {

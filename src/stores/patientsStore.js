@@ -1,3 +1,4 @@
+import { loadList } from '@/services/loadList.mjs'
 // stores/patientsStore.js
 import { defineStore } from 'pinia'
 import { PatientService } from '@/services/patientService'
@@ -5,6 +6,9 @@ import { PatientService } from '@/services/patientService'
 export const usePatientsStore = defineStore('patients', {
     state: () => ({
         items: [],
+        listLoading: false,
+        loadError: '',
+        requestVersion: 0,
         totalCount: 0,
         current: null,
         query: {
@@ -31,12 +35,7 @@ export const usePatientsStore = defineStore('patients', {
                 Address: this.query.address
             }
 
-            const data = await PatientService.getPatients(params)
-            // ожидаем { data, totalCount, page, pageSize }
-            this.items = data.data || []
-            this.totalCount = data.totalCount || 0
-            this.query.page = data.page || this.query.page
-            this.query.pageSize = data.pageSize || this.query.pageSize
+            await loadList(this, () => PatientService.getPatients(params))
         },
 
         async setPage(p) {

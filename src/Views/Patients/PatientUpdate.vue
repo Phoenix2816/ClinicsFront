@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from '@/services/apiClient';
 import PatientForm from '@/Views/Patients/PatientForm.vue';
 
 export default {
@@ -26,7 +26,7 @@ export default {
   methods: {
     async loadPatient() {
       try {
-        const { data } = await axios.get(`https://clinics-7.onrender.com/api/patients/${this.patientId}`);
+        const { data } = await axios.get(`/patients/${this.patientId}`);
         this.form = {
           name: data.name || '',
           surname: data.surname || '',
@@ -39,7 +39,7 @@ export default {
     },
     async fetchDoctors() {
       try {
-        const { data } = await axios.get('https://clinics-7.onrender.com/api/doctors');
+        const { data } = await axios.get('/doctors');
         this.doctors = data;
       } catch (error) {
         console.error('Error loading doctors:', error);
@@ -47,7 +47,7 @@ export default {
     },
     async submit(data) {
       try {
-        await axios.put(`https://clinics-7.onrender.com/api/patients/${this.patientId}`, data);
+        await axios.put(`/patients/${this.patientId}`, data);
         this.$router.push('/patients');
       } catch (error) {
         console.error('Error updating patient:', error);

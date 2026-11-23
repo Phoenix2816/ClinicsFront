@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/services/apiClient'
 import DoctorForm from '@/Views/Doctors/DoctorForm.vue'
 
 export default {
@@ -21,7 +21,7 @@ async created() {
 methods: {
   async loadDoctor() {
     try {
-      const { data } = await axios.get(`https://clinics-7.onrender.com/api/doctors/${this.$route.params.id}`)
+      const { data } = await axios.get(`/doctors/${this.$route.params.id}`)
       this.form = {
         name: data.name || '',
         surname: data.surname || '',
@@ -34,7 +34,7 @@ methods: {
   },
   async fetchClinics() {
     try {
-      const { data } = await axios.get('https://clinics-7.onrender.com/api/clinics')
+      const { data } = await axios.get('/clinics')
       this.clinics = data.data || data
     } catch (error) {
       console.error('Error fetching clinics:', error)

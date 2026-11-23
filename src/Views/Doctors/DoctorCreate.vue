@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/services/apiClient'
 import DoctorForm from '@/Views/Doctors/DoctorForm.vue'
 
 export default {
@@ -20,7 +20,7 @@ export default {
   methods: {
 async fetchClinics() {
     try {
-      const response = await axios.get('https://clinics-7.onrender.com/api/clinics');
+      const response = await axios.get('/clinics');
       // If API response shape is { totalCount, page, pageSize, data: [...] }
       this.clinics = response.data.data || response.data; // ensure it's the array
     } catch (error) {
